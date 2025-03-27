@@ -1,6 +1,6 @@
 #!/bin/bash
 
-algo="bmm"
+algo="bmm"  # change here with kernel when the finetuning is complete.
 
 while read -r line_up; do
     while read -r line_down; do

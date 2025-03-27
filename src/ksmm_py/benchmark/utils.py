@@ -8,6 +8,11 @@ def forward_pass(model, x):
         return model(x)
 
 
+def llama_forward_pass(model, inputs):
+    with torch.no_grad():
+        return model(**inputs)
+
+
 def pattern_is_dense(pattern):
     return pattern[0] == pattern[3] == 1
 
@@ -58,18 +63,18 @@ def count_model_params(model):
 
 
 def get_path_submodules_vit(
-    arch,
-    granularity,
-    algo,
-    bs_position,
-    precision,
-    batch_size,
-    device_name,
-    patterns_d_d,
-    patterns_d_4d,
-    patterns_4d_d,
-    sdpa_version,
-    split_qkv,
+        arch,
+        granularity,
+        algo,
+        bs_position,
+        precision,
+        batch_size,
+        device_name,
+        patterns_d_d,
+        patterns_d_4d,
+        patterns_4d_d,
+        sdpa_version,
+        split_qkv,
 ):
     assert bs_position in ["bs_first", "bs_last"]
     assert algo is None or algo in [

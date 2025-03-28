@@ -31,7 +31,7 @@ def get_arguments():
     return parser.parse_args()
 
 
-def replace_linear_layers(module, up_pattern1, up_pattern2, down_pattern1, down_pattern2, algo):
+def replace_linear_layers(module, up_pattern1, up_pattern2, down_pattern1, down_pattern2, algo, device):
     for name, child in module.named_children():
         if isinstance(child, nn.Linear):
             if child.in_features == 4096 and child.out_features == 14336:
@@ -41,7 +41,7 @@ def replace_linear_layers(module, up_pattern1, up_pattern2, down_pattern1, down_
             else:
                 continue
             new_linear = KSLinear(patterns=patterns, bias=child.bias is not None, algo=algo,
-                                  dtype=child.weight.dtype, bs_last=False, device=str(child.weight.device))
+                                  dtype=child.weight.dtype, bs_last=False, device=device)
             setattr(module, name, new_linear)
         else:
             replace_linear_layers(child, up_pattern1, up_pattern2, down_pattern1, down_pattern2, algo)
@@ -80,7 +80,6 @@ if __name__ == "__main__":
     args = get_arguments()
     model_id = "meta-llama/Llama-3.1-8B"
 
-
     # SET DEVICE
     device_name = set_device_and_get_device_name(args.device_id, args.device)
 
@@ -92,7 +91,7 @@ if __name__ == "__main__":
     model = AutoModelForCausalLM.from_pretrained(model_id)
     if args.algo != "dense":
         replace_linear_layers(model, args.up_pattern1, args.up_pattern2, args.down_pattern1, args.down_pattern2,
-                              args.algo)
+                              args.algo, args.device)
     print(model)
     model = model.to(dtype=dtype, device=args.device)
 

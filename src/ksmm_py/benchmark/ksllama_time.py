@@ -44,7 +44,7 @@ def replace_linear_layers(module, up_pattern1, up_pattern2, down_pattern1, down_
                                   dtype=child.weight.dtype, bs_last=False, device=device)
             setattr(module, name, new_linear)
         else:
-            replace_linear_layers(child, up_pattern1, up_pattern2, down_pattern1, down_pattern2, algo)
+            replace_linear_layers(child, up_pattern1, up_pattern2, down_pattern1, down_pattern2, algo, device)
 
 
 def save_results(args, m, device_name):

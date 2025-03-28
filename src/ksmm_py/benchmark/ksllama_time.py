@@ -80,6 +80,7 @@ if __name__ == "__main__":
     args = get_arguments()
     model_id = "meta-llama/Llama-3.1-8B"
 
+
     # SET DEVICE
     device_name = set_device_and_get_device_name(args.device_id, args.device)
 

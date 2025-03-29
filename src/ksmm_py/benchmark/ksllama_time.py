@@ -20,9 +20,9 @@ def get_arguments():
     parser.add_argument("--up-pattern2", nargs='+', type=int)
     parser.add_argument("--down-pattern1", nargs='+', type=int)
     parser.add_argument("--down-pattern2", nargs='+', type=int)
-    parser.add_argument("--batch-size", type=int, default=64)
+    parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--seq-length", type=int, default=196)
-    parser.add_argument("--precision", type=str, choices=["fp32", "fp16"], default="fp16")
+    parser.add_argument("--precision", type=str, choices=["fp32", "fp16"], default="fp32")
     parser.add_argument("--algo", type=str)
     parser.add_argument("--device", type=str, default="cuda")
     parser.add_argument("--min-run-time", type=float, default=5)
@@ -89,11 +89,11 @@ if __name__ == "__main__":
     # Prepare model
     print("Preparing model...")
     model = AutoModelForCausalLM.from_pretrained(model_id)
+    model = model.to(dtype=dtype, device=args.device)
     if args.algo != "dense":
         replace_linear_layers(model, args.up_pattern1, args.up_pattern2, args.down_pattern1, args.down_pattern2,
                               args.algo, args.device)
     print(model)
-    model = model.to(dtype=dtype, device=args.device)
 
     # Prepare input
     tokenizer = AutoTokenizer.from_pretrained(model_id)

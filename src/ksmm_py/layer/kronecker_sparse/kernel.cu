@@ -12,9 +12,9 @@
 // #include <cuda_fp16.h>
 
 #include "kernel_bs_first_float4.cuh"
-#include "kernel_bs_last_float4.cuh"
-#include "kernel_bs_first_half2.cuh"
-#include "kernel_bs_last_half2.cuh"
+// #include "kernel_bs_last_float4.cuh"
+// #include "kernel_bs_first_half2.cuh"
+// #include "kernel_bs_last_half2.cuh"
 
 
 using namespace nvcuda;

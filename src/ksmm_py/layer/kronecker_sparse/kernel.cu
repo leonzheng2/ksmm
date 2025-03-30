@@ -72,10 +72,10 @@ torch::Tensor kernel(
 	    switch (bs_last)
 	      {
 	      case 0:
-		best_kernel_bs_first_half2(reinterpret_cast<half *>(input.data_ptr()), reinterpret_cast<half *>(values.data_ptr()), reinterpret_cast<half *>(output.data_ptr()), batch_size, a, b, c, d, blockGrid, threadsPerBlock);
+		// best_kernel_bs_first_half2(reinterpret_cast<half *>(input.data_ptr()), reinterpret_cast<half *>(values.data_ptr()), reinterpret_cast<half *>(output.data_ptr()), batch_size, a, b, c, d, blockGrid, threadsPerBlock);
 		break;
 	      case 1:
-		best_kernel_bs_last_half2(reinterpret_cast<half *>(input.data_ptr()), reinterpret_cast<half *>(values.data_ptr()), reinterpret_cast<half *>(output.data_ptr()), batch_size, a, b, c, d, blockGrid, threadsPerBlock);
+		// best_kernel_bs_last_half2(reinterpret_cast<half *>(input.data_ptr()), reinterpret_cast<half *>(values.data_ptr()), reinterpret_cast<half *>(output.data_ptr()), batch_size, a, b, c, d, blockGrid, threadsPerBlock);
 		break;
 	      default:
 		break;
@@ -89,7 +89,7 @@ torch::Tensor kernel(
 		best_kernel_bs_first_float4(reinterpret_cast<float *>(input.data_ptr()), reinterpret_cast<float *>(values.data_ptr()), reinterpret_cast<float *>(output.data_ptr()), batch_size, a, b, c, d, blockGrid, threadsPerBlock);
 		break;
 	      case 1:
-		best_kernel_bs_last_float4(reinterpret_cast<float *>(input.data_ptr()), reinterpret_cast<float *>(values.data_ptr()), reinterpret_cast<float *>(output.data_ptr()), batch_size, a, b, c, d, blockGrid, threadsPerBlock);
+		// best_kernel_bs_last_float4(reinterpret_cast<float *>(input.data_ptr()), reinterpret_cast<float *>(values.data_ptr()), reinterpret_cast<float *>(output.data_ptr()), batch_size, a, b, c, d, blockGrid, threadsPerBlock);
 		break;
 	      default:
 		break;

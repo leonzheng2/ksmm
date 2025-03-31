@@ -33,7 +33,7 @@ def get_arguments():
     parser.add_argument("--device", type=str, default="cuda")
     parser.add_argument("--min-run-time", type=float, default=5)
     parser.add_argument("--device-id", type=int, default=0)
-    parser.add_argument("--saving-dir", type=Path, default="./results/2_llama")
+    parser.add_argument("--saving-dir", type=Path, default="./results/3_gpt")
     return parser.parse_args()
 
 
@@ -46,8 +46,13 @@ def replace_linear_layers(module, up_pattern1, up_pattern2, down_pattern1, down_
                 patterns = [down_pattern2, down_pattern1]
             else:
                 continue
-            new_linear = KSLinear(patterns=patterns, bias=child.bias is not None, algo=algo,
-                                  dtype=child.weight.dtype, bs_last=False, device=device)
+            new_linear = KSLinear(patterns=patterns, 
+                                #   bias=child.bias is not None, 
+                                  bias=False, 
+                                  algo=algo,
+                                  dtype=child.weight.dtype, 
+                                  bs_last=False, 
+                                  device=device)
             setattr(module, name, new_linear)
         else:
             replace_linear_layers(child, up_pattern1, up_pattern2, down_pattern1, down_pattern2, algo, device)
@@ -136,9 +141,9 @@ if __name__ == "__main__":
 
     # Measure time. When not enough time to measure, increase the min_run_time to 11.0 * max(m.mean, m.median)
     m = measure()
-    # if m.number_per_run <= 10:
-    #     args.min_run_time = 11.0 * max(m.mean, m.median)
-    #     m = measure()
+    if m.number_per_run <= 10:
+        args.min_run_time = 11.0 * max(m.mean, m.median)
+        m = measure()
     print(m)
 
     # SAVE RESULTS

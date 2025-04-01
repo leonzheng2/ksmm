@@ -44,3 +44,5 @@ process_patterns() {
 
 process_patterns "scripts/gpt-patterns/candidates-${emb_dim}-up.txt" "bmm"
 process_patterns "scripts/gpt-patterns/candidates-${emb_dim}-down.txt" "bmm"
+
+# C'est un premier filtre. Après il faudra vérifier que ça marche aussi dans le ViT complet.

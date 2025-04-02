@@ -15,8 +15,8 @@ while read -r line_up; do
           --up-pattern2 $ua2 $ub2 $uc2 $ud2 \
           --down-pattern1 $da1 $db1 $dc1 $dd1 \
           --down-pattern2 $da2 $db2 $dc2 $dd2
-    done < scripts/llama-patterns/candidates_4096_14336.txt
-done < scripts/llama-patterns/candidates_14336_4096.txt
+    done < results/patterns/llama-patterns/candidates_4096_14336.txt
+done < results/patterns/llama-patterns/candidates_14336_4096.txt
 
 algo="kernel"
 python3 src/ksmm_py/benchmark/ksllama_time.py \

@@ -24,9 +24,9 @@ python src/ksmm_py/benchmark/ksmm_time.py \
 
 source venv/bin/activate
 tmux new-session -d -s "my-session"
-tmux send-keys -t my-session:0 "bash scripts/6bis_process_patterns.sh scripts/gpt-patterns/candidates-${emb_dim}-${projection}-0.txt bmm 0" C-m
+tmux send-keys -t my-session:0 "bash scripts/6bis_process_patterns.sh results/patterns/gpt-patterns/candidates-${emb_dim}-${projection}-0.txt bmm 0" C-m
 for i in {1..7}; do
   tmux new-window -t my-session:$i
-  tmux send-keys -t my-session:$i "bash scripts/6bis_process_patterns.sh scripts/gpt-patterns/candidates-${emb_dim}-${projection}-${i}.txt bmm ${i}" C-m
+  tmux send-keys -t my-session:$i "bash scripts/6bis_process_patterns.sh results/patterns/gpt-patterns/candidates-${emb_dim}-${projection}-${i}.txt bmm ${i}" C-m
 done
 tmux attach-session -t my-session

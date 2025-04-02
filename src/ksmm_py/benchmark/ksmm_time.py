@@ -24,7 +24,8 @@ def get_args():
     parser.add_argument("--device-id", type=int, default=0)
 
     # Parameters for butterfly parameterization
-    parser.add_argument("--patterns", type=str, nargs="+", default="")
+    parser.add_argument("--patterns", type=str, nargs="+", default="",
+                        help="from the rightmost pattern to the leftmost pattern")
     parser.add_argument("--algo",
                         choices=["sparse", "dense", "bmm", "kernel", "einsum", "bsr", "nn_linear"],
                         help="Choice of the KSMM algorithm. See the paper, or look directly into the functions forward_bs_first and forward_bs_last (file ksmm_py/layer/kronecker_sparse/interface.py) for details about the algorithms sparse, dense, bmm, kernel, einsum and bsr.",

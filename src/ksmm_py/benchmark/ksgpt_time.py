@@ -34,6 +34,7 @@ def get_arguments():
     parser.add_argument("--min-run-time", type=float, default=5)
     parser.add_argument("--device-id", type=int, default=0)
     parser.add_argument("--saving-dir", type=Path, default="./results/3_gpt")
+    parser.add_argument("--guarantee-ten-measures", action="store_true")
     return parser.parse_args()
 
 
@@ -46,12 +47,12 @@ def replace_linear_layers(module, up_pattern1, up_pattern2, down_pattern1, down_
                 patterns = [down_pattern2, down_pattern1]
             else:
                 continue
-            new_linear = KSLinear(patterns=patterns, 
-                                #   bias=child.bias is not None, 
-                                  bias=False, 
+            new_linear = KSLinear(patterns=patterns,
+                                  #   bias=child.bias is not None,
+                                  bias=False,
                                   algo=algo,
-                                  dtype=child.weight.dtype, 
-                                  bs_last=False, 
+                                  dtype=child.weight.dtype,
+                                  bs_last=False,
                                   device=device)
             setattr(module, name, new_linear)
         else:
@@ -119,11 +120,6 @@ if __name__ == "__main__":
     inputs = {k: v.to(args.device) for k, v in inputs.items()}
     x = inputs["input_ids"]
 
-    # # Test one inference
-    # with torch.no_grad():
-    #     outputs, _ = model(x)
-    # print("Shape of output logits: ", outputs.shape)
-
 
     # BENCHMARK
     def measure():
@@ -141,7 +137,7 @@ if __name__ == "__main__":
 
     # Measure time. When not enough time to measure, increase the min_run_time to 11.0 * max(m.mean, m.median)
     m = measure()
-    if m.number_per_run <= 10:
+    if args.guarantee_ten_measures and m.number_per_run <= 10:
         args.min_run_time = 11.0 * max(m.mean, m.median)
         m = measure()
     print(m)

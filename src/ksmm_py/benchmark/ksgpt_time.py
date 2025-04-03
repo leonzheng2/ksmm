@@ -53,11 +53,13 @@ def replace_linear_layers(model_id, module, up_pattern1, up_pattern2, down_patte
             replace_linear_layers(model_id, child, up_pattern1, up_pattern2, down_pattern1, down_pattern2, algo, device)
 
 
-def save_results(args, m, device_name):
+def save_results(args, m, device_name, model):
+    number_parameters = count_parameters(model)
     results_df = pd.DataFrame(
         [
             {
                 "model": args.model_id,
+                "number_parameters": number_parameters,
                 "device_name": device_name,
                 "up-pattern1": args.up_pattern1,
                 "up-pattern2": args.up_pattern2,
@@ -81,6 +83,10 @@ def save_results(args, m, device_name):
         saving_path = args.saving_dir / f"model={args.model_id}-algo={args.algo}-precision={args.precision}-batch_size={args.batch_size}-seq_length={args.seq_length}-up_pattern_1={args.up_pattern1}-up_pattern_2={args.up_pattern2}-down_pattern1={args.down_pattern1}-down_pattern2={args.down_pattern2}.csv"
         saving_path.parent.mkdir(parents=True, exist_ok=True)
         results_df.to_csv(saving_path)
+
+
+def count_parameters(model):
+    return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
 
 if __name__ == "__main__":
@@ -141,4 +147,4 @@ if __name__ == "__main__":
     print(m)
 
     # SAVE RESULTS
-    save_results(args, m, device_name)
+    save_results(args, m, device_name, model)

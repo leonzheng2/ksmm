@@ -1,0 +1,2 @@
+pattern,batch-size,algo,bs_position,precision,device_name,mean,median,iqr,times
+"[[16, 64, 256, 1], [1, 1024, 1024, 1]]",25088,kernel,bs_first,fp32,Tesla_V100-PCIE-32GB,0.010750786430144217,0.010750786430144217,0.0,[0.010750786430144217]

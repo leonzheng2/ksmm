@@ -1,0 +1,2 @@
+,model,number_parameters,device_name,up-pattern1,up-pattern2,down-pattern1,down-pattern2,batch-size,seq-length,precision,device,algo,min-run-time,device-id,mean,median,iqr
+0,gpt2-medium,263597056,Tesla_V100-PCIE-32GB,,,"[1, 128, 128, 8]","[16, 64, 256, 1]",128,196,fp32,cuda,bmm,5,0,0.9422376929966655,0.9420143850002205,0.0022526637476403266

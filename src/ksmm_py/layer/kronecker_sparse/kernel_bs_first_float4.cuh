@@ -8,174 +8,6642 @@
 void best_kernel_bs_first_float4(float *input, float *values, float *output, int batch_size, int a, int b, int c, int d, dim3 &blockGrid, dim3 &threadsPerBlock){
 	while (1) {
 		threadsPerBlock.y = 1;
-    if (batch_size == 25088 && a == 1 && b == 64 && c == 768 && d == 24) {
-      threadsPerBlock.x = 32;
-      blockGrid.x = 24;
-      blockGrid.y = 784;
-      kernel_bs_first_float4<64,16,32,4,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 96 && b == 192 && c == 64 && d == 1) {
-      threadsPerBlock.x = 32;
-      blockGrid.x = 288;
-      blockGrid.y = 392;
-      kernel_bs_first_float4<64,16,64,8,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 1 && b == 64 && c == 192 && d == 96) {
-      threadsPerBlock.x = 64;
-      blockGrid.x = 96;
-      blockGrid.y = 392;
-      kernel_bs_first_float4<64,16,64,8,8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 24 && b == 768 && c == 64 && d == 1) {
-      threadsPerBlock.x = 128;
-      blockGrid.x = 144;
-      blockGrid.y = 392;
-      kernel_bs_first_float4<128,8,64,4,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 1 && b == 96 && c == 288 && d == 64) {
-      threadsPerBlock.x = 96;
-      blockGrid.x = 64;
-      blockGrid.y = 784;
-      kernel_bs_first_float4<96,12,32,4,8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 48 && b == 384 && c == 32 && d == 1) {
-      threadsPerBlock.x = 32;
-      blockGrid.x = 288;
-      blockGrid.y = 784;
-      kernel_bs_first_float4<64,32,32,8,8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 1 && b == 32 && c == 384 && d == 48) {
-      threadsPerBlock.x = 64;
-      blockGrid.x = 48;
-      blockGrid.y = 784;
-      kernel_bs_first_float4<32,8,32,4,4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 64 && b == 288 && c == 96 && d == 1) {
-      threadsPerBlock.x = 96;
-      blockGrid.x = 192;
-      blockGrid.y = 392;
-      kernel_bs_first_float4<96,12,64,4,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 1 && b == 96 && c == 1152 && d == 16) {
-      threadsPerBlock.x = 96;
-      blockGrid.x = 16;
-      blockGrid.y = 392;
-      kernel_bs_first_float4<96,12,64,4,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 192 && b == 96 && c == 32 && d == 1) {
-      threadsPerBlock.x = 32;
-      blockGrid.x = 576;
-      blockGrid.y = 784;
-      kernel_bs_first_float4<32,32,32,8,4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 1 && b == 32 && c == 96 && d == 192) {
-      threadsPerBlock.x = 16;
-      blockGrid.x = 192;
-      blockGrid.y = 392;
-      kernel_bs_first_float4<32,32,64,16,8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 16 && b == 1152 && c == 96 && d == 1) {
-      threadsPerBlock.x = 64;
-      blockGrid.x = 144;
-      blockGrid.y = 392;
-      kernel_bs_first_float4<128,8,64,8,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 1 && b == 8 && c == 96 && d == 192) {
-      threadsPerBlock.x = 8;
-      blockGrid.x = 192;
-      blockGrid.y = 1568;
-      kernel_bs_first_float4<8,8,16,4,4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 48 && b == 384 && c == 128 && d == 1) {
-      threadsPerBlock.x = 64;
-      blockGrid.x = 144;
-      blockGrid.y = 392;
-      kernel_bs_first_float4<128,8,64,8,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 1 && b == 128 && c == 384 && d == 48) {
-      threadsPerBlock.x = 128;
-      blockGrid.x = 48;
-      blockGrid.y = 392;
-      kernel_bs_first_float4<128,8,64,4,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 192 && b == 96 && c == 8 && d == 1) {
-      threadsPerBlock.x = 32;
-      blockGrid.x = 576;
-      blockGrid.y = 1568;
-      kernel_bs_first_float4<32,8,16,4,4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 1 && b == 48 && c == 512 && d == 32) {
-      threadsPerBlock.x = 64;
-      blockGrid.x = 96;
-      blockGrid.y = 196;
-      kernel_bs_first_float4<16,16,128,8,4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 64 && b == 256 && c == 96 && d == 1) {
-      threadsPerBlock.x = 128;
-      blockGrid.x = 128;
-      blockGrid.y = 392;
-      kernel_bs_first_float4<128,8,64,4,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 1 && b == 96 && c == 256 && d == 64) {
-      threadsPerBlock.x = 16;
-      blockGrid.x = 192;
-      blockGrid.y = 392;
-      kernel_bs_first_float4<32,32,64,8,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-if (batch_size == 25088 && a == 32 && b == 512 && c == 48 && d == 1) {
-      threadsPerBlock.x = 128;
-      blockGrid.x = 128;
-      blockGrid.y = 392;
-      kernel_bs_first_float4<128,8,64,4,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-      break;
-   }
-        // if (batch_size == 25088 && a == 1 && b == 64 && c == 768 && d == 24) {
-        //     threadsPerBlock.x = 32;
-        //     blockGrid.x = 24;
-        //     blockGrid.y = 196;
-        //     kernel_bs_first_float4<64,8,128,16,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-        //     break;
-        //   }
-        // if (batch_size == 25088 && a == 96 && b == 192 && c == 64 && d == 1) {
-        //     threadsPerBlock.x = 32;
-        //     blockGrid.x = 288;
-        //     blockGrid.y = 196;
-        //     kernel_bs_first_float4<64,8,128,16,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-        //     break;
-        //   }
-        // if (batch_size == 25088 && a == 1 && b == 64 && c == 192 && d == 96) {
-        //     threadsPerBlock.x = 32;
-        //     blockGrid.x = 96;
-        //     blockGrid.y = 196;
-        //     kernel_bs_first_float4<64,8,128,16,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-        //     break;
-        //   }
-        // if (batch_size == 25088 && a == 24 && b == 768 && c == 64 && d == 1) {
-        //     threadsPerBlock.x = 32;
-        //     blockGrid.x = 288;
-        //     blockGrid.y = 196;
-        //     kernel_bs_first_float4<64,8,128,16,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-        //     break;
-        //   }
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 1;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 2) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 2;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 3) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 3;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 4;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 5) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 5;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 6) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 8) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 12) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 16) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 24) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 32) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 48) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 64) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 96) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 48 && d == 128) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 1;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 2) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 2;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 3) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 3;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 4;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 5) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 5;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 6) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 8) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 12) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 16) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 24) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 32) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 32;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 48) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 64) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 96) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 48 && c == 192 && d == 128) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 2) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 2;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 3) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 3;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 4;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 5) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 5;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 6) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 8) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 12) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 16;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 24) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 32) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 48) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 64) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 96) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 64 && d == 128) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 2) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 2;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 3) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 3;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 4;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 5) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 5;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 6) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 8) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 12) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 12;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 16;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 24) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 32) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 48) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 96) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 64 && c == 256 && d == 128) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 3;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 2) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 3) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 9;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 5) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 15;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 6) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 18;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 8) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 12) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 16) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 24) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 32) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 196;
+			kernel_bs_first_float4<32, 16, 128, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 48) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 144;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 64) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 96) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 96 && d == 128) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 3;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 2) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 3) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 9;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 5) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 15;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 6) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 18;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 8) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 12) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 24) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 32) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 48) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 144;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 96) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 96 && c == 384 && d == 128) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 2;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 2) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 4;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 3) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 5) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 10;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 6) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 8) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 12) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 24) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 32) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 48) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 96) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 128 && d == 128) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 2;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 2) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 4;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 3) {
+			threadsPerBlock.x = 256;
+			blockGrid.x = 6;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 5) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 10;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 6) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 8) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 16;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 12) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 24) {
+			threadsPerBlock.x = 256;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 32) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 48) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 96) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 128 && c == 512 && d == 128) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 4;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 2) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 3) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 5) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 20;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 6) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 24;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 8) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 12) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 16) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 24) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 32) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 48) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 64) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 96) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 48 && d == 128) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 3;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 2) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 6;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 3) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 9;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 5) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 15;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 6) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 18;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 8) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 12) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 24) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 32) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 48) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 144;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 96) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 192 && d == 128) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 768 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 3;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 768 && d == 2) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 768 && d == 3) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 9;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 768 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 768 && d == 5) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 15;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 768 && d == 6) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 18;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 768 && d == 8) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 768 && d == 12) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 768 && d == 16) {
+			threadsPerBlock.x = 256;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 768 && d == 24) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 768 && d == 32) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 768 && d == 48) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 144;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 768 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 192 && c == 768 && d == 96) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 4;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 2) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 3) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 5) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 20;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 6) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 8) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 12) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 24) {
+			threadsPerBlock.x = 256;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 32) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 48) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 96) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 64 && d == 128) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 4;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 2) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 3) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 12;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 5) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 20;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 6) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 8) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 12) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 64;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 24) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 32) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 48) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 96) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 256 && d == 128) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 4;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 1024 && d == 2) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 1024 && d == 3) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 12;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 1024 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 1024 && d == 5) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 20;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 1024 && d == 6) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 1024 && d == 8) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 1024 && d == 12) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 1024 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 1024 && d == 24) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 1024 && d == 32) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 1024 && d == 48) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 256 && c == 1024 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 2) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 3) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 18;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 5) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 30;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 6) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 8) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 12) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 24) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 32) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 48) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 96) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 576;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 96 && d == 128) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 2) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 3) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 18;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 5) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 30;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 6) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 8) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 12) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 16) {
+			threadsPerBlock.x = 256;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 24) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 32) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 48) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 96) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 384 && c == 384 && d == 128) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 2) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 3) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 5) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 40;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 6) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 8) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 12) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 24) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 32) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 48) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 96) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 128 && d == 128) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1024;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 2) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 3) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 32;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 5) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 40;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 6) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 8) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 12) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 24) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 32) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 48) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 96) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 512 && c == 512 && d == 128) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 192 && d == 2) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 192 && d == 3) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 192 && d == 5) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 60;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 192 && d == 6) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 192 && d == 8) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 192 && d == 12) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 192 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 192 && d == 24) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 192 && d == 32) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 192 && d == 48) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 576;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 192 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 192 && d == 96) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 768 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 768 && d == 2) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 768 && d == 3) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 768 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 768 && d == 5) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 60;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 768 && d == 6) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 768 && d == 8) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 768 && d == 12) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 768 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 768 && d == 24) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 768 && d == 32) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 768 && d == 48) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 768 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 768 && c == 768 && d == 96) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 256 && d == 2) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 256 && d == 3) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 256 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 256 && d == 5) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 80;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 256 && d == 6) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 256 && d == 8) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 256 && d == 12) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 256 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 256 && d == 24) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 256 && d == 32) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 256 && d == 48) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 256 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 1024 && d == 2) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 1024 && d == 3) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 1024 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 1024 && d == 5) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 80;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 1024 && d == 6) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 1024 && d == 8) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 1024 && d == 12) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 1024 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 1024 && d == 24) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 1024 && d == 32) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 1024 && d == 48) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 1 && b == 1024 && c == 1024 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 2;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 48 && c == 48 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 48 && c == 48 && d == 16) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 48 && c == 48 && d == 64) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 2;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 48 && c == 192 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 48 && c == 192 && d == 16) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 48 && c == 192 && d == 64) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 2;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 64 && c == 64 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 64 && c == 64 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 64 && c == 64 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 2;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 96 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 96 && c == 96 && d == 16) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 96 && c == 96 && d == 64) {
+			threadsPerBlock.x = 16;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 96 && c == 384 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 96 && c == 384 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 96 && c == 384 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 4;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 128 && c == 128 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 128 && c == 128 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 128 && c == 128 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 4;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 192 && c == 48 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 192 && c == 48 && d == 16) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 192 && c == 48 && d == 64) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 192 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 192 && c == 192 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 192 && c == 192 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 192 && c == 768 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 192 && c == 768 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 192 && c == 768 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 256 && c == 256 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 256 && c == 256 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 256 && c == 256 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 256 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 8;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 384 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 384 && c == 96 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 384 && c == 96 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 384 && c == 384 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 384 && c == 384 && d == 16) {
+			threadsPerBlock.x = 256;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 384 && c == 384 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 16;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 512 && c == 512 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 512 && c == 512 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 512 && c == 512 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 768 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 768 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 768 && c == 192 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 768 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 24;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 768 && c == 768 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 768 && c == 768 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 1024 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 1024 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 1024 && c == 1024 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 2 && b == 1024 && c == 1024 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 3;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 48 && c == 48 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 48 && c == 48 && d == 16) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 48 && c == 48 && d == 64) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 3;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 48 && c == 192 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 48 && c == 192 && d == 16) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 48 && c == 192 && d == 64) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 3;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 64 && c == 64 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 64 && c == 64 && d == 16) {
+			threadsPerBlock.x = 256;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 64 && c == 64 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 3;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 9;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 96 && c == 96 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 96 && c == 96 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 144;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 16, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 96 && c == 96 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 9;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 96 && c == 384 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 96 && c == 384 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 144;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 96 && c == 384 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 6;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 128 && c == 128 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 128 && c == 128 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 128 && c == 128 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 6;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 192 && c == 48 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 192 && c == 48 && d == 16) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 192 && c == 48 && d == 64) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 9;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 192 && c == 192 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 192 && c == 192 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 144;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 192 && c == 192 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 192 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 9;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 192 && c == 768 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 192 && c == 768 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 144;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 256 && c == 256 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 256 && c == 256 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 256 && c == 256 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 256 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 12;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 18;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 384 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 384 && c == 96 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 384 && c == 96 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1152;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 18;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 384 && c == 384 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 384 && c == 384 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 384 && c == 384 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 512 && c == 512 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 512 && c == 512 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 768 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 768 && c == 192 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 768 && c == 192 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 768 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 36;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 768 && c == 768 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 768 && c == 768 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 1024 && c == 256 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 1024 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 1024 && c == 1024 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 3 && b == 1024 && c == 1024 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 4;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 48 && c == 48 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 48 && c == 48 && d == 16) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 64;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 48 && c == 48 && d == 64) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 4;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 48 && c == 192 && d == 4) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 48 && c == 192 && d == 16) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 48 && c == 192 && d == 64) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 4;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 64 && c == 64 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 64 && c == 64 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 64 && c == 64 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 4;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 96 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 96 && c == 96 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 96 && c == 96 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 96 && c == 384 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 96 && c == 384 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 8;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 128 && c == 128 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 128 && c == 128 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 128 && c == 128 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 192 && c == 48 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 192 && c == 48 && d == 16) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 192 && c == 48 && d == 64) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 1024;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 192 && c == 192 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 192 && c == 192 && d == 16) {
+			threadsPerBlock.x = 256;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 192 && c == 192 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 192 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 192 && c == 768 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 192 && c == 768 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 16;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 256 && c == 256 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 256 && c == 256 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 256 && c == 256 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 256 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 384 && c == 96 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 384 && c == 96 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 384 && c == 384 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 384 && c == 384 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 512 && c == 512 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 512 && c == 512 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 768 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 768 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 768 && c == 192 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 768 && c == 768 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 768 && c == 768 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 768 && c == 768 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 1024 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 1024 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 1024 && c == 1024 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 4 && b == 1024 && c == 1024 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 5;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 5;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 5;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 5;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 15;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 15;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 10;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 10;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 20;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 15;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 192 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 15;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 20;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 20;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 256 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 20;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 30;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 30;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 40;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 40;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 768 && c == 192 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 60;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 768 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 60;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 1024 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 80;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 5 && b == 1024 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 80;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 48 && c == 48 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 48 && c == 48 && d == 16) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 48 && c == 48 && d == 64) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 48 && c == 192 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 48 && c == 192 && d == 16) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 48 && c == 192 && d == 64) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 64 && c == 64 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 64 && c == 64 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 64 && c == 64 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 6;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 18;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 96 && c == 96 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 96 && c == 96 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 96 && c == 96 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 18;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 96 && c == 384 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 96 && c == 384 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 12;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 128 && c == 128 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 128 && c == 128 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 128 && c == 128 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 192 && c == 48 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 192 && c == 48 && d == 16) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 192 && c == 48 && d == 64) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 1536;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 18;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 192 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 192 && c == 192 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 192 && c == 192 && d == 64) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 192 && c == 768 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 18;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 192 && c == 768 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 192 && c == 768 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 24;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 256 && c == 256 && d == 4) {
+			threadsPerBlock.x = 256;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 256 && c == 256 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 256 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 384 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 384 && c == 96 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 576;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 36;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 384 && c == 384 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 384 && c == 384 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 512 && c == 512 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 512 && c == 512 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 768 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 768 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 768 && c == 192 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 768 && c == 768 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 768 && c == 768 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 768 && c == 768 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 1024 && c == 256 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 1024 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 6 && b == 1024 && c == 1024 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 8;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 48 && c == 48 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 48 && c == 48 && d == 16) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 48 && c == 48 && d == 64) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 48 && c == 192 && d == 4) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 48 && c == 192 && d == 16) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 64 && c == 64 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 64 && c == 64 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 64 && c == 64 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 8;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 96 && c == 96 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 96 && c == 96 && d == 16) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 96 && c == 96 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1536;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 96 && c == 384 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 96 && c == 384 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 128 && c == 128 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 128 && c == 128 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 128 && c == 128 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1024;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 32;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 192 && c == 48 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 192 && c == 48 && d == 16) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 192 && c == 192 && d == 4) {
+			threadsPerBlock.x = 256;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 192 && c == 192 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 192 && c == 768 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 192 && c == 768 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 256 && c == 256 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 256 && c == 256 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 256 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 384 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 384 && c == 96 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 384 && c == 384 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 384 && c == 384 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 512 && c == 512 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 512 && c == 512 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 768 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 768 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 768 && c == 768 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 768 && c == 768 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 1024 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 1024 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 8 && b == 1024 && c == 1024 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 48 && c == 48 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 48 && c == 48 && d == 16) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 48 && c == 48 && d == 64) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 48 && c == 192 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 48 && c == 192 && d == 16) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 64 && c == 64 && d == 4) {
+			threadsPerBlock.x = 256;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 64 && c == 64 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 64 && c == 64 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 12;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 96 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 96 && c == 96 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 96 && c == 96 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 2304;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 96 && c == 384 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 96 && c == 384 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 128 && c == 128 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 128 && c == 128 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 24;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 192 && c == 48 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 192 && c == 48 && d == 16) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 36;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 192 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 192 && c == 192 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 192 && c == 768 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 36;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 192 && c == 768 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 256 && c == 256 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 256 && c == 256 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 256 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 384 && c == 96 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 384 && c == 96 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 384 && c == 384 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 384 && c == 384 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 512 && c == 512 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 768 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 768 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 576;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 768 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 144;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 768 && c == 768 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 1024 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 1024 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 12 && b == 1024 && c == 1024 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 48 && c == 48 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 48 && c == 48 && d == 16) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 48 && c == 48 && d == 64) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 1024;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 48 && c == 192 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 48 && c == 192 && d == 16) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 16;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 64 && c == 64 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 64 && c == 64 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 64 && c == 64 && d == 64) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1024;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 16;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 96 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 96 && c == 96 && d == 16) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 96 && c == 384 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 128 && c == 128 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 128 && c == 128 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 32;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 192 && c == 48 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 192 && c == 48 && d == 16) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 1024;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 192 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 192 && c == 192 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 192 && c == 768 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 192 && c == 768 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 256 && c == 256 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 256 && c == 256 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 256 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 384 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 384 && c == 384 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 512 && c == 512 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 768 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 768 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 768 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 768 && c == 768 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 1024 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 1024 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 16 && b == 1024 && c == 1024 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 48 && c == 48 && d == 4) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<24, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 48 && c == 48 && d == 16) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 48 && c == 48 && d == 64) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 1536;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 48 && c == 192 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 48 && c == 192 && d == 16) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 24;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 64 && c == 64 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 64 && c == 64 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 24;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 96 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 96 && c == 96 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 96 && c == 384 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 128 && c == 128 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 128 && c == 128 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 192 && c == 48 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 192 && c == 48 && d == 16) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 1536;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 192 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 192 && c == 192 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 192 && c == 768 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 72;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 192 && c == 768 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 256 && c == 256 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 256 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 384 && c == 96 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 576;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 384 && c == 384 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 512 && c == 512 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 768 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 768 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1152;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 768 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 768 && c == 768 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 1024 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 24 && b == 1024 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 48 && c == 48 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 48 && c == 48 && d == 16) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 32;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 48 && c == 192 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 32;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 64 && c == 64 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 64 && c == 64 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 32;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 96 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 96 && c == 96 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1536;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 96 && c == 384 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 128 && c == 128 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 128 && c == 128 && d == 16) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 192 && c == 48 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 192 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 192 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 256 && c == 256 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 256 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 384 && c == 96 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 384 && c == 384 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 512 && c == 512 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 768 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 768 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 1024 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 32 && b == 1024 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 48 && c == 48 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 48 && c == 48 && d == 16) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 48;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 48 && c == 192 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 64 && c == 64 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 64 && c == 64 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 48;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 96 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 576;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 96 && c == 96 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 2304;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 96 && c == 384 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 128 && c == 128 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 192 && c == 48 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 144;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 192 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 576;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 192 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 144;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 256 && c == 256 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 256 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 384 && c == 96 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1152;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 384 && c == 384 && d == 4) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 768 && c == 192 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 768 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 1024 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 48 && b == 1024 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 48 && c == 48 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 48 && c == 48 && d == 16) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 1024;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 48 && c == 192 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 64;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 64 && c == 64 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 64 && c == 64 && d == 16) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1024;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 64;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 96 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 128 && c == 128 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 192 && c == 48 && d == 4) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 1024;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 192 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 192 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 256;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 256 && c == 256 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1024;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 256 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 768 && c == 192 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 768 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 1024 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 64 && b == 1024 && c == 1024 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 48 && c == 48 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 48 && c == 48 && d == 16) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 1536;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 48 && c == 192 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 96;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 64 && c == 64 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 96;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 96 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 1152;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 192;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 128 && c == 128 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 192;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<48, 24, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 192 && c == 48 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 1536;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 288;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 192 && c == 192 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1152;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 192 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 288;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 576;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 576;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 768 && c == 192 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 96 && b == 768 && c == 768 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1152;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 48 && c == 48 && d == 1) {
+			threadsPerBlock.x = 24;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 48 && c == 48 && d == 4) {
+			threadsPerBlock.x = 48;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 48 && c == 192 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 64 && c == 64 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 128;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 64 && c == 64 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 64 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 128;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 96 && c == 96 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 96 && c == 96 && d == 4) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 1536;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 96 && c == 384 && d == 1) {
+			threadsPerBlock.x = 32;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 128 && c == 128 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 128 && c == 128 && d == 4) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 1024;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 128 && c == 512 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 256;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 192 && c == 48 && d == 1) {
+			threadsPerBlock.x = 96;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<48, 24, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 192 && c == 192 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 384;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 256 && c == 64 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 512;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 256 && c == 256 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 512;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 384 && c == 96 && d == 1) {
+			threadsPerBlock.x = 64;
+			blockGrid.x = 768;
+			blockGrid.y = 784;
+			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 384 && c == 384 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 768;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 512 && c == 128 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
+		if (batch_size == 25088 && a == 128 && b == 512 && c == 512 && d == 1) {
+			threadsPerBlock.x = 128;
+			blockGrid.x = 1024;
+			blockGrid.y = 392;
+			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+			break;
+		}
 		assert(1 == 0);
 		break;
 	}
@@ -184,1635 +6652,1820 @@ if (batch_size == 25088 && a == 32 && b == 512 && c == 48 && d == 1) {
 #endif
 
 // // -*- c -*-
-
+//
 // #ifndef KERNEL_BS_FIRST_FLOAT4
 // #define KERNEL_BS_FIRST_FLOAT4
-
+//
 // #include "template_kernels_float4.cuh"
-
+//
 // void best_kernel_bs_first_float4(float *input, float *values, float *output, int batch_size, int a, int b, int c, int d, dim3 &blockGrid, dim3 &threadsPerBlock){
 // 	while (1) {
 // 		threadsPerBlock.y = 1;
-// 		if (batch_size == 25088 && a == 6 && b == 64 && c == 64 && d == 1) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = 6;
-// 			blockGrid.y = 784;
-// 			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<64, 8, 128, 16, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<64, 4, 128, 16, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<64, 8, 128, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<64, 4, 128, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<64, 8, 128, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<32, 16, 128, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<32, 8, 128, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<32, 4, 128, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<32, 16, 128, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<32, 8, 128, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<16, 16, 128, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<16, 8, 128, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<64, 8, 128, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<64, 4, 128, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<64, 8, 128, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<32, 16, 128, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<32, 8, 128, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<32, 4, 128, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<32, 16, 128, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<32, 8, 128, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<32, 16, 128, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<16, 16, 128, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<16, 8, 128, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<16, 16, 128, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<64, 8, 128, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<32, 16, 128, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<32, 8, 128, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<32, 16, 128, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<16, 16, 128, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<16, 8, 128, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 128 - 1) / 128;
-// 			kernel_bs_first_float4<16, 16, 128, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 32, 64, 16, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 16, 64, 16, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 8, 64, 16, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 4, 64, 16, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 32, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 16, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 8, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 4, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 32, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 16, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 8, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 4, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 32, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 16, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 8, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 4, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 32, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 16, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 8, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 4, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<16, 16, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<16, 8, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<16, 4, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 32, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 16, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 8, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 4, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 32, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 8, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 4, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 8, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 32, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 16, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 8, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 4, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 32, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 8, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 4, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 8, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<16, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<16, 8, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<16, 4, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<16, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<16, 8, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 32, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 16, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 8, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 4, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 32, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 16, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 8, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 256;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 32, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 256;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<64, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 32, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 16, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 8, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 4, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 32, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 16, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 8, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 32, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<32, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<16, 16, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<16, 8, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<16, 4, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<16, 16, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<16, 8, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 64 - 1) / 64;
-// 			kernel_bs_first_float4<16, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 32, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 16, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 8, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 4, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 32, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 16, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 8, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 4, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 32, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 16, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 8, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 4, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 32, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 16, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 8, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 4, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 16, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 8, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 4, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 32, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 16, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 8, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 4, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 32, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 8, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 4, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 8, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 32, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 16, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 8, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 4, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 32, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 8, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 4, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 8, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 4, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 8, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 4, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 8, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 4, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 32, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 16, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 8, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 4, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 16, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 8, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 128;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 32, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 16, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 8, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 4, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 16, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 8, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 4, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<32, 8, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 16, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 8, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 4, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 16, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 8, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 4, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 32 - 1) / 32;
-// 			kernel_bs_first_float4<16, 8, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<64, 16, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<64, 8, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<64, 4, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 16, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 8, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 4, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 4;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 16, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 4;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 8, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 4;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 4, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<64, 16, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<64, 8, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<64, 4, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<64, 16, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<64, 8, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 16, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 8, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 4, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 16, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 8, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 4, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 4;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 16, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 4;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 8, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 4;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 4, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 16, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 8, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 4, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<64, 16, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<64, 8, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<64, 4, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<64, 16, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<64, 8, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 64;
-// 			blockGrid.x = (a * b * d + 64 - 1) / 64;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<64, 16, 16, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 16, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 8, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 4, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 16, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 8, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 4, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 16, 16, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 32;
-// 			blockGrid.x = (a * b * d + 32 - 1) / 32;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<32, 8, 16, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 4;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 16, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 4;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 8, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 4;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 4, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 16, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 8, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 8;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 4, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 16, 16, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 8, 16, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
-// 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
-// 			threadsPerBlock.x = 16;
-// 			blockGrid.x = (a * b * d + 16 - 1) / 16;
-// 			blockGrid.y = (batch_size + 16 - 1) / 16;
-// 			kernel_bs_first_float4<16, 4, 16, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
-// 			break;
-// 		}
+//     if (batch_size == 25088 && a == 1 && b == 64 && c == 768 && d == 24) {
+//       threadsPerBlock.x = 32;
+//       blockGrid.x = 24;
+//       blockGrid.y = 784;
+//       kernel_bs_first_float4<64,16,32,4,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 96 && b == 192 && c == 64 && d == 1) {
+//       threadsPerBlock.x = 32;
+//       blockGrid.x = 288;
+//       blockGrid.y = 392;
+//       kernel_bs_first_float4<64,16,64,8,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 1 && b == 64 && c == 192 && d == 96) {
+//       threadsPerBlock.x = 64;
+//       blockGrid.x = 96;
+//       blockGrid.y = 392;
+//       kernel_bs_first_float4<64,16,64,8,8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 24 && b == 768 && c == 64 && d == 1) {
+//       threadsPerBlock.x = 128;
+//       blockGrid.x = 144;
+//       blockGrid.y = 392;
+//       kernel_bs_first_float4<128,8,64,4,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 1 && b == 96 && c == 288 && d == 64) {
+//       threadsPerBlock.x = 96;
+//       blockGrid.x = 64;
+//       blockGrid.y = 784;
+//       kernel_bs_first_float4<96,12,32,4,8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 48 && b == 384 && c == 32 && d == 1) {
+//       threadsPerBlock.x = 32;
+//       blockGrid.x = 288;
+//       blockGrid.y = 784;
+//       kernel_bs_first_float4<64,32,32,8,8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 1 && b == 32 && c == 384 && d == 48) {
+//       threadsPerBlock.x = 64;
+//       blockGrid.x = 48;
+//       blockGrid.y = 784;
+//       kernel_bs_first_float4<32,8,32,4,4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 64 && b == 288 && c == 96 && d == 1) {
+//       threadsPerBlock.x = 96;
+//       blockGrid.x = 192;
+//       blockGrid.y = 392;
+//       kernel_bs_first_float4<96,12,64,4,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 1 && b == 96 && c == 1152 && d == 16) {
+//       threadsPerBlock.x = 96;
+//       blockGrid.x = 16;
+//       blockGrid.y = 392;
+//       kernel_bs_first_float4<96,12,64,4,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 192 && b == 96 && c == 32 && d == 1) {
+//       threadsPerBlock.x = 32;
+//       blockGrid.x = 576;
+//       blockGrid.y = 784;
+//       kernel_bs_first_float4<32,32,32,8,4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 1 && b == 32 && c == 96 && d == 192) {
+//       threadsPerBlock.x = 16;
+//       blockGrid.x = 192;
+//       blockGrid.y = 392;
+//       kernel_bs_first_float4<32,32,64,16,8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 16 && b == 1152 && c == 96 && d == 1) {
+//       threadsPerBlock.x = 64;
+//       blockGrid.x = 144;
+//       blockGrid.y = 392;
+//       kernel_bs_first_float4<128,8,64,8,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 1 && b == 8 && c == 96 && d == 192) {
+//       threadsPerBlock.x = 8;
+//       blockGrid.x = 192;
+//       blockGrid.y = 1568;
+//       kernel_bs_first_float4<8,8,16,4,4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 48 && b == 384 && c == 128 && d == 1) {
+//       threadsPerBlock.x = 64;
+//       blockGrid.x = 144;
+//       blockGrid.y = 392;
+//       kernel_bs_first_float4<128,8,64,8,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 1 && b == 128 && c == 384 && d == 48) {
+//       threadsPerBlock.x = 128;
+//       blockGrid.x = 48;
+//       blockGrid.y = 392;
+//       kernel_bs_first_float4<128,8,64,4,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 192 && b == 96 && c == 8 && d == 1) {
+//       threadsPerBlock.x = 32;
+//       blockGrid.x = 576;
+//       blockGrid.y = 1568;
+//       kernel_bs_first_float4<32,8,16,4,4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 1 && b == 48 && c == 512 && d == 32) {
+//       threadsPerBlock.x = 64;
+//       blockGrid.x = 96;
+//       blockGrid.y = 196;
+//       kernel_bs_first_float4<16,16,128,8,4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 64 && b == 256 && c == 96 && d == 1) {
+//       threadsPerBlock.x = 128;
+//       blockGrid.x = 128;
+//       blockGrid.y = 392;
+//       kernel_bs_first_float4<128,8,64,4,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 1 && b == 96 && c == 256 && d == 64) {
+//       threadsPerBlock.x = 16;
+//       blockGrid.x = 192;
+//       blockGrid.y = 392;
+//       kernel_bs_first_float4<32,32,64,8,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+// if (batch_size == 25088 && a == 32 && b == 512 && c == 48 && d == 1) {
+//       threadsPerBlock.x = 128;
+//       blockGrid.x = 128;
+//       blockGrid.y = 392;
+//       kernel_bs_first_float4<128,8,64,4,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//       break;
+//    }
+//         // if (batch_size == 25088 && a == 1 && b == 64 && c == 768 && d == 24) {
+//         //     threadsPerBlock.x = 32;
+//         //     blockGrid.x = 24;
+//         //     blockGrid.y = 196;
+//         //     kernel_bs_first_float4<64,8,128,16,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//         //     break;
+//         //   }
+//         // if (batch_size == 25088 && a == 96 && b == 192 && c == 64 && d == 1) {
+//         //     threadsPerBlock.x = 32;
+//         //     blockGrid.x = 288;
+//         //     blockGrid.y = 196;
+//         //     kernel_bs_first_float4<64,8,128,16,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//         //     break;
+//         //   }
+//         // if (batch_size == 25088 && a == 1 && b == 64 && c == 192 && d == 96) {
+//         //     threadsPerBlock.x = 32;
+//         //     blockGrid.x = 96;
+//         //     blockGrid.y = 196;
+//         //     kernel_bs_first_float4<64,8,128,16,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//         //     break;
+//         //   }
+//         // if (batch_size == 25088 && a == 24 && b == 768 && c == 64 && d == 1) {
+//         //     threadsPerBlock.x = 32;
+//         //     blockGrid.x = 288;
+//         //     blockGrid.y = 196;
+//         //     kernel_bs_first_float4<64,8,128,16,16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+//         //     break;
+//         //   }
 // 		assert(1 == 0);
 // 		break;
 // 	}
 // }
-
+//
 // #endif
+//
+// // // -*- c -*-
+//
+// // #ifndef KERNEL_BS_FIRST_FLOAT4
+// // #define KERNEL_BS_FIRST_FLOAT4
+//
+// // #include "template_kernels_float4.cuh"
+//
+// // void best_kernel_bs_first_float4(float *input, float *values, float *output, int batch_size, int a, int b, int c, int d, dim3 &blockGrid, dim3 &threadsPerBlock){
+// // 	while (1) {
+// // 		threadsPerBlock.y = 1;
+// // 		if (batch_size == 25088 && a == 6 && b == 64 && c == 64 && d == 1) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = 6;
+// // 			blockGrid.y = 784;
+// // 			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, 25088, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<64, 8, 128, 16, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<64, 4, 128, 16, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<64, 8, 128, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<64, 4, 128, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<64, 8, 128, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<32, 16, 128, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<32, 8, 128, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<32, 4, 128, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<32, 16, 128, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<32, 8, 128, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<16, 16, 128, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<16, 8, 128, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<64, 8, 128, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<64, 4, 128, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<64, 8, 128, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<32, 16, 128, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<32, 8, 128, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<32, 4, 128, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<32, 16, 128, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<32, 8, 128, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<32, 16, 128, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<16, 16, 128, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<16, 8, 128, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<16, 16, 128, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<64, 8, 128, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<32, 16, 128, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<32, 8, 128, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<32, 16, 128, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<16, 16, 128, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<16, 8, 128, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 128) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 128 - 1) / 128;
+// // 			kernel_bs_first_float4<16, 16, 128, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 32, 64, 16, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 16, 64, 16, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 8, 64, 16, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 4, 64, 16, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 32, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 16, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 8, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 4, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 32, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 16, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 8, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 4, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 32, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 16, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 8, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 4, 64, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 32, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 16, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 8, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 4, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<16, 16, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<16, 8, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<16, 4, 64, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 32, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 16, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 8, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 4, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 32, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 8, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 4, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 8, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 32, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 16, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 8, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 4, 64, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 32, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 8, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 4, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 32, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 8, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<16, 16, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<16, 8, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<16, 4, 64, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<16, 16, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<16, 8, 64, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 32, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 16, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 8, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 4, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 32, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 16, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 8, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 256;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 32, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 256;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<64, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 32, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 16, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 8, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 4, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 32, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 16, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 8, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 32, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<32, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<16, 16, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<16, 8, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<16, 4, 64, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<16, 16, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<16, 8, 64, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 64) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 64 - 1) / 64;
+// // 			kernel_bs_first_float4<16, 16, 64, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 32, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 16, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 8, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 4, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 32, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 16, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 8, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 4, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 32, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 16, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 8, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 4, 32, 8, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 32, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 16, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 8, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 4, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 16, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 8, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 4, 32, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 32, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 16, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 8, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 4, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 32, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 8, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 4, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 8, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 32, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 16, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 8, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 4, 32, 16, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 32, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 8, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 4, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 32, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 8, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 4, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 16, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 8, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 4, 32, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 16, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 8, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 4, 32, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 32, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 16, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 8, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 4, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 16, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 8, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 128;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<64, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 32, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 16, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 8, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 4, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 32, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 16, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 8, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 4, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 32 && ((c * d) % (d * 32)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 32, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<32, 8, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 16, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 8, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 4, 32, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 16, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 8, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 4, 32, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 16, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 32) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 32 - 1) / 32;
+// // 			kernel_bs_first_float4<16, 8, 32, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<64, 16, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<64, 8, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<64, 4, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 16, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 8, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 4, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 4;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 16, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 4;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 8, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 4;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 4, 16, 4, 16><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<64, 16, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<64, 8, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<64, 4, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<64, 16, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<64, 8, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 16, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 8, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 4, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 16, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 8, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 4, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 4;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 16, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 4;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 8, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 4;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 4, 16, 8, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 16, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 8, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 4, 16, 4, 8><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<64, 16, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<64, 8, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<64, 4, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<64, 16, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<64, 8, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 64 && ((b * d) % (d * 64)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 64;
+// // 			blockGrid.x = (a * b * d + 64 - 1) / 64;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<64, 16, 16, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 16, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 8, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 4, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 16, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 8, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 4, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 16, 16, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 32 && ((b * d) % (d * 32)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 32;
+// // 			blockGrid.x = (a * b * d + 32 - 1) / 32;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<32, 8, 16, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 4;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 16, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 4;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 8, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 4;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 4, 16, 16, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 16, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 8, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 8;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 4, 16, 8, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 16 && ((c * d) % (d * 16)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 16, 16, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 8 && ((c * d) % (d * 8)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 8, 16, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		if ((batch_size % 16) == 0 && b > 16 && ((b * d) % (d * 16)) == 0 && c > 4 && ((c * d) % (d * 4)) == 0) {
+// // 			threadsPerBlock.x = 16;
+// // 			blockGrid.x = (a * b * d + 16 - 1) / 16;
+// // 			blockGrid.y = (batch_size + 16 - 1) / 16;
+// // 			kernel_bs_first_float4<16, 4, 16, 4, 4><<<blockGrid, threadsPerBlock>>>(input, values, batch_size, output, a, b, c, d);
+// // 			break;
+// // 		}
+// // 		assert(1 == 0);
+// // 		break;
+// // 	}
+// // }
+//
+// // #endif

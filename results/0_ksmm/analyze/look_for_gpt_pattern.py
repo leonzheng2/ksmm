@@ -9,8 +9,8 @@ def get_arguments():
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--raw-path", type=Path, default="./results/0_ksmm_time.csv")
-    parser.add_argument("--input-dim", type=int, default=emb_dim)
-    parser.add_argument("--output-dim", type=int, default=4 * emb_dim)
+    parser.add_argument("--input-dim", type=int, default=4 * emb_dim)
+    parser.add_argument("--output-dim", type=int, default=emb_dim)
     parser.add_argument("--bs-position", type=str, default="bs_first")
     parser.add_argument("--batch-size", type=int, default=25088)
     parser.add_argument("--precision", type=str, default="fp32")
@@ -72,4 +72,5 @@ if __name__ == "__main__":
     interesting = result[result["ratio"] < 1]
     print(interesting)
     interesting.to_csv(args.save_dir / f"interesting-gpt-{args.output_dim}x{args.input_dim}.csv")
-
+    selected = interesting[['a_1', 'b_1', 'c_1', 'd_1', 'a_2', 'b_2', 'c_2', 'd_2']]
+    selected.to_csv(args.save_dir / f"interesting-gpt-{args.output_dim}x{args.input_dim}.txt", sep=' ', index=False, header=False)

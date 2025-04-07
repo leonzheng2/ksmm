@@ -12,7 +12,7 @@ def get_arguments():
     return parser.parse_args()
 
 
-def concatenate_csvs(directory_path, output_filename="concatenated.csv"):
+def concatenate_csvs(directory_path):
     # List all CSV files in the directory
     csv_files = [f for f in os.listdir(directory_path) if f.endswith('.csv')]
 

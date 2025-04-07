@@ -20,12 +20,12 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
-	     "einops>=0.8",
-	     "numpy>=2.1",
-	     "packaging>=24.1",
-	     "pandas>=2.2",
-	     "torch>=2.4",
-         "pyJoules"
+    "einops>=0.8",
+    "numpy>=2.1",
+    "packaging>=24.1",
+    "pandas>=2.2",
+    # Leave torch out here
+    "pyJoules"
 ]
 
 [project.optional-dependencies]

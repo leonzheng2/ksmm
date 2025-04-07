@@ -3,16 +3,16 @@ import torch
 
 class BmmBsFirst(torch.autograd.Function):
     @staticmethod
-    @torch.amp.custom_fwd(cast_inputs=torch.float32, device_type='cuda')
+    @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
     def forward(ctx, x, w_kron, pattern):
         out = forward_bmm_bs_first(w_kron, x, pattern)
         ctx.save_for_backward(x, w_kron)
         return out
 
-    @staticmethod
-    @torch.amp.custom_bwd(device_type='cuda')
-    def backward(ctx, dout):
-        pass
+    # @staticmethod
+    # @torch.cuda.amp.custom_bwd(None)
+    # def backward(ctx, dout):
+    #     pass
 
 
 bmm_bs_first = BmmBsFirst.apply
@@ -20,16 +20,16 @@ bmm_bs_first = BmmBsFirst.apply
 
 class BmmBsLast(torch.autograd.Function):
     @staticmethod
-    @torch.amp.custom_fwd(cast_inputs=torch.float32, device_type='cuda')
+    @torch.cuda.amp.custom_fwd(cast_inputs=torch.float32)
     def forward(ctx, x, w_kron, pattern):
         out = forward_bmm_bs_last(w_kron, x, pattern)
         ctx.save_for_backward(x, w_kron)
         return out
 
-    @staticmethod
-    @torch.amp.custom_bwd(device_type='cuda')
-    def backward(ctx, dout):
-        pass
+    # @staticmethod
+    # @torch.cuda.amp.custom_bwd(None)
+    # def backward(ctx, dout):
+    #     pass
 
 
 bmm_bs_last = BmmBsLast.apply
